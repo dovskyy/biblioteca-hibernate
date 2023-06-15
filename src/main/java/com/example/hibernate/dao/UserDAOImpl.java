@@ -1,13 +1,14 @@
 package com.example.hibernate;
 
-import jakarta.persistence.Query;
+import com.example.hibernate.dao.UserDAO;
+import com.example.hibernate.model.User;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
 import java.util.List;
 
-public class UserDAOImpl implements UserDAO{
+public class UserDAOImpl implements UserDAO {
     private final SessionFactory sessionFactory;
 
     public UserDAOImpl(SessionFactory sessionFactory) {
