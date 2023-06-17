@@ -1,4 +1,4 @@
-package com.example.hibernate;
+package com.example.hibernate.dao;
 
 import com.example.hibernate.dao.BookDAO;
 import org.hibernate.SessionFactory;

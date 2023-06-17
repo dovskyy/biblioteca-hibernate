@@ -1,4 +1,4 @@
-package com.example.hibernate;
+package com.example.hibernate.dao;
 
     /*
     Alternatywnie, UserDAO może być również zwykłą klasą, która zawiera pełną implementację operacji na danych dla encji User.
@@ -6,6 +6,8 @@ package com.example.hibernate;
     konkretne operacje i brak potrzeby abstrakcji. Użycie interfejsu UserDAO jest jednym z popularnych podejść przy implementacji
     wzorca projektowego DAO (Data Access Object).
      */
+
+import com.example.hibernate.model.User;
 
 import java.util.List;
 

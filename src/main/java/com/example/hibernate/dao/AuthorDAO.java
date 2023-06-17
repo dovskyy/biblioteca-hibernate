@@ -1,4 +1,7 @@
-package com.example.hibernate;
+package com.example.hibernate.dao;
+
+import com.example.hibernate.model.Author;
+import com.example.hibernate.model.Book;
 
 import java.util.List;
 

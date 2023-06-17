@@ -1,4 +1,4 @@
-package com.example.hibernate;
+package com.example.hibernate.dao;
 
 import com.example.hibernate.dao.AuthorDAO;
 import com.example.hibernate.model.Author;
@@ -78,11 +78,36 @@ public class AuthorDAOImpl implements AuthorDAO {
 
     @Override
     public void delete(Author author) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
 
+        try {
+            transaction = session.beginTransaction();
+            session.delete(author);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
     }
 
     @Override
     public Author getAuthorById(int id) {
-        return null;
+        Session session = sessionFactory.openSession();
+        Author author = null;
+
+        try {
+            author = session.get(Author.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return author;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.hibernate;
+package com.example.hibernate.dao;
 
 public interface BookDAO {
 }

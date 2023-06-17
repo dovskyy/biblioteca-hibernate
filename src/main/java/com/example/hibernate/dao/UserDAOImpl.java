@@ -1,4 +1,4 @@
-package com.example.hibernate;
+package com.example.hibernate.dao;
 
 import com.example.hibernate.dao.UserDAO;
 import com.example.hibernate.model.User;

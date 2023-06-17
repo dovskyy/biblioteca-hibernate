@@ -1,4 +1,4 @@
-package com.example.hibernate;
+package com.example.hibernate.model;
 
 import jakarta.persistence.*;
 import java.util.ArrayList;
@@ -20,6 +20,10 @@ public class Author {
 
     public Author() {
         this.books = new ArrayList<>();
+    }
+
+    public void addBook(Book book) {
+        books.add(book);
     }
 
 
