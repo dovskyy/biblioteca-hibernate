@@ -5,8 +5,11 @@ import com.example.hibernate.dao.AuthorDAOImpl;
 import com.example.hibernate.dao.BookDAO;
 import com.example.hibernate.dao.BookDAOImpl;
 import com.example.hibernate.model.Author;
+import com.example.hibernate.model.Book;
 import org.hibernate.SessionFactory;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class UserInterface {
@@ -53,16 +56,30 @@ public class UserInterface {
     }
 
     private void addBookToAuthor() {
+        System.out.println("Please provide author's ID:");
+        int id = scanner.nextInt();
+        Author author = authorDAO.getAuthorById(id);
+
 
     }
 
     private void getAuthorsBooks() {
+        System.out.println("Please provide author's ID:");
+        int id = scanner.nextInt();
+        Author author = authorDAO.getAuthorById(id);
+        ArrayList<Book> books = (ArrayList<Book>) authorDAO.getBooks(author);
 
+        for (Book book : books) {
+            System.out.println(book);
+        }
 
     }
 
     private void deleteAuthor() {
-
+        System.out.println("Please provide author's ID:");
+        int id = scanner.nextInt();
+        Author author = authorDAO.getAuthorById(id);
+        authorDAO.delete(author);
 
     }
 
