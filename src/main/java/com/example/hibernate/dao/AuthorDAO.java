@@ -6,7 +6,7 @@ import com.example.hibernate.model.Book;
 import java.util.List;
 
 public interface AuthorDAO {
-    void addBook(Book book);
+//    void addBook(Book book);
     List<Book> getBooks(Author author);
     void save(Author author);
     void update(Author author);

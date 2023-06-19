@@ -1,6 +1,6 @@
 package com.example.hibernate.dao;
 
-import com.example.hibernate.dao.AuthorDAO;
+
 import com.example.hibernate.model.Author;
 import com.example.hibernate.model.Book;
 import jakarta.persistence.criteria.CriteriaBuilder;
@@ -20,24 +20,24 @@ public class AuthorDAOImpl implements AuthorDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    @Override
-    public void addBook(Book book) {
-        Session session = sessionFactory.openSession();
-        Transaction transaction = null;
-
-        try {
-            transaction = session.beginTransaction();
-            session.save(book);
-            transaction.commit();
-        } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            e.printStackTrace();
-        } finally {
-            session.close();
-        }
-    }
+//    @Override
+//    public void addBook(Book book) {
+//        Session session = sessionFactory.openSession();
+//        Transaction transaction = null;
+//
+//        try {
+//            transaction = session.beginTransaction();
+//            session.save(book);
+//            transaction.commit();
+//        } catch (Exception e) {
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//            e.printStackTrace();
+//        } finally {
+//            session.close();
+//        }
+//    }
 
     @Override
     public List<Book> getBooks(Author author) {
@@ -73,6 +73,21 @@ public class AuthorDAOImpl implements AuthorDAO {
 
     @Override
     public void update(Author author) {
+        Session session = sessionFactory.openSession();
+        Transaction transaction = null;
+
+        try {
+            transaction = session.beginTransaction();
+            session.update(author);
+            transaction.commit();
+        } catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
 
     }
 

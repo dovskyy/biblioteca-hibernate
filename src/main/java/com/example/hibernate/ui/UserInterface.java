@@ -32,7 +32,8 @@ public class UserInterface {
                         "\n1. Add author" +
                         "\n2. Delete author" +
                         "\n3. Get author's books" +
-                        "\n4. Add book to the author" +
+                        "\n4. Add book" +
+                        "\n5. Delete book" +
                         "\nQ. Quit the app"
         );
 
@@ -46,7 +47,9 @@ public class UserInterface {
             } else if (command.equals("3")) {
                 getAuthorsBooks();
             } else if (command.equals("4")) {
-                addBookToAuthor();
+                addBook();
+            } else if (command.equals("5")) {
+                deleteBook();
             } else if (command.equals("Q")) {
                 break;
             }
@@ -55,12 +58,29 @@ public class UserInterface {
 
     }
 
-    private void addBookToAuthor() {
+    private void deleteBook() {
+        System.out.println("Please provide book's ID:");
+        int id = scanner.nextInt();
+        Book book = bookDAO.getBookById(id);
+        bookDAO.deleteBook(book);
+    }
+
+    private void addBook() {
         System.out.println("Please provide author's ID:");
         int id = scanner.nextInt();
+        scanner.nextLine();
         Author author = authorDAO.getAuthorById(id);
+        Book book = new Book();
 
+        System.out.println("Please provide name of the book:");
+        String name = scanner.nextLine();
+        System.out.println("Please provide year of the publication:");
+        Integer year = scanner.nextInt();
+        book.setName(name);
+        book.setYearWritten(year);
+        book.setAuthor(author);
 
+        bookDAO.addBook(book);
     }
 
     private void getAuthorsBooks() {
